@@ -1,10 +1,7 @@
-<script setup>
-defineProps({
-  size: {
-    type: String,
-    default: '24'
-  }
-})
+<script setup lang="ts">
+defineProps<{
+  size?: string | number
+}>()
 </script>
 <template>
   <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24">

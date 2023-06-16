@@ -61,6 +61,6 @@ onMounted(() => {
       class="outline-0 bg-transparent w-full"
     />
     <span v-else>Search</span>
-    <IconSearchAnimated :key="showInput" class="inline-block ml-3 text-primary" @click="onSearch" />
+    <IconSearchAnimated class="inline-block ml-3 text-primary" @click="onSearch" />
   </div>
 </template>

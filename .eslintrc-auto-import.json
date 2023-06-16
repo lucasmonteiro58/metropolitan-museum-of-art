@@ -293,6 +293,7 @@
     "watchWithFilter": true,
     "whenever": true,
     "usePaginator": true,
-    "useSearch": true
+    "useSearch": true,
+    "useObject": true
   }
 }

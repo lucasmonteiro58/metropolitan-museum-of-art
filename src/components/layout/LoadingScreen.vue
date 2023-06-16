@@ -1,4 +1,4 @@
-<script setup></script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="absolute inset-0 flex items-center justify-center w-full h-screen z-50 bg-white">
