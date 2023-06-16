@@ -1,7 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const showLoadingScreen = ref<Boolean>(true)
+</script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <LoadingScreen v-if="showLoadingScreen" />
+  <BackgroundVideo v-show="!showLoadingScreen" @loaded="showLoadingScreen = false" />
 </template>
