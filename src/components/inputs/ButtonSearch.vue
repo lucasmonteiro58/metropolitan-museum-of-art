@@ -9,6 +9,12 @@ function onClick() {
   showInput.value = true
 }
 
+function onSearch() {
+  if (textInput.value && showInput.value) {
+    console.log('Search for:', textInput.value)
+  }
+}
+
 onClickOutside(target, () => {
   showInput.value = false
 })
@@ -31,12 +37,18 @@ const computedClass = computed(() => {
     <input
       v-if="showInput"
       v-model="textInput"
+      @keyup.enter="onSearch"
       type="text"
       autofocus
       placeholder="Type here..."
       class="outline-0 bg-transparent w-full"
     />
     <span v-else>Search</span>
-    <IconSearchAnimated :key="showInput" class="inline-block ml-3" />
+    <IconSearchAnimated
+      :key="showInput"
+      class="inline-block ml-3"
+      :class="showInput && 'text-primary'"
+      @click="onSearch"
+    />
   </div>
 </template>
