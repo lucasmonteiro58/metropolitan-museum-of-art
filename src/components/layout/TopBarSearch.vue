@@ -24,7 +24,10 @@ onMounted(() => {
   <div
     class="w-full bg-primary flex sm:px-8 sm:py-4 px-4 py-4 justify-center sm:flex-row flex-col items-center"
   >
-    <IconLogo class="text-white select-none sm:w-20 w-10 mx-auto sm:mx-0 sm:mr-auto"></IconLogo>
+    <RouterLink to="/" class="text-white select-none sm:w-20 w-10 mx-auto sm:mx-0 sm:mr-auto">
+      <IconLogo></IconLogo
+    ></RouterLink>
+
     <ButtonSearch
       v-model="search"
       class="sm:!w-[700px] mr-auto sm:ml-14 w-full ml-0 sm:mt-0 mt-3"
