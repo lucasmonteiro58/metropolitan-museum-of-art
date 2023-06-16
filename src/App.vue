@@ -1,6 +1,8 @@
 <script setup lang="ts"></script>
 
 <template>
-  <header></header>
-  <RouterView />
+  <div class="relative min-h-screen">
+    <header></header>
+    <RouterView />
+  </div>
 </template>

@@ -3,7 +3,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
-// import Unfonts from 'unplugin-fonts/vite'
+import Unfonts from 'unplugin-fonts/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -25,8 +25,25 @@ export default defineConfig({
       extensions: ['vue'],
       dts: 'src/components.d.ts',
       include: [/\.vue$/, /\.vue\?vue/]
+    }),
+    Unfonts({
+      custom: {
+        families: [
+          {
+            name: 'NeueHaas',
+            local: 'NeueHaas',
+            src: './public/assets/fonts/NeueHaas.ttf'
+          },
+          {
+            name: 'NeueHaasMedium',
+            local: 'NeueHaasMedium',
+            src: './public/assets/fonts/NeueHaas-Medium.ttf'
+          }
+        ],
+        display: 'auto',
+        preload: true
+      }
     })
-    // Unfonts({})
   ],
   resolve: {
     alias: {
