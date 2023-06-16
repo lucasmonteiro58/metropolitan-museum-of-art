@@ -8,7 +8,13 @@ import Unfonts from 'unplugin-fonts/vite'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    vue(),
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => ['a-scene', 'a-assets', 'a-videosphere'].includes(tag)
+        }
+      }
+    }),
     AutoImport({
       imports: ['vue', 'vue-router', 'vue/macros', '@vueuse/head', '@vueuse/core'],
       dts: 'src/auto-imports.d.ts',

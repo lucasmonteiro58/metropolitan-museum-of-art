@@ -15,5 +15,6 @@ declare module 'vue' {
     LoadingScreen: typeof import('./components/layout/LoadingScreen.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TopBarSearch: typeof import('./components/layout/TopBarSearch.vue')['default']
   }
 }

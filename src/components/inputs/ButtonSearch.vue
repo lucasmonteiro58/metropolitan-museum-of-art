@@ -1,9 +1,18 @@
 <script setup lang="ts">
 import { onClickOutside } from '@vueuse/core'
+import { useVModel } from '@vueuse/core'
 
 const showInput = ref<Boolean>(false)
-const textInput = ref<String>('')
 const target = ref<HTMLElement | null>(null)
+
+const props = defineProps<{
+  modelValue: String
+  full?: Boolean
+  placeholder?: string
+}>()
+
+const emit = defineEmits(['update:modelValue', 'search'])
+const textInput = useVModel(props, 'modelValue', emit)
 
 function onClick() {
   showInput.value = true
@@ -11,18 +20,25 @@ function onClick() {
 
 function onSearch() {
   if (textInput.value && showInput.value) {
-    console.log('Search for:', textInput.value)
+    emit('search')
   }
 }
 
 onClickOutside(target, () => {
-  showInput.value = false
+  if (!props.full) showInput.value = false
 })
 
 const computedClass = computed(() => {
   return {
-    'sm:w-[500px] w-[90%]': showInput.value,
+    'sm:w-[500px] w-[90%]': showInput.value && !props.full,
+    'sm:w-full w-full': showInput.value && props.full,
     'sm:w-64 w-48 justify-between': !showInput.value
+  }
+})
+
+onMounted(() => {
+  if (props.full) {
+    showInput.value = true
   }
 })
 </script>
@@ -40,15 +56,10 @@ const computedClass = computed(() => {
       @keyup.enter="onSearch"
       type="text"
       autofocus
-      placeholder="Type here..."
+      :placeholder="placeholder || 'Type here...'"
       class="outline-0 bg-transparent w-full"
     />
     <span v-else>Search</span>
-    <IconSearchAnimated
-      :key="showInput"
-      class="inline-block ml-3"
-      :class="showInput && 'text-primary'"
-      @click="onSearch"
-    />
+    <IconSearchAnimated :key="showInput" class="inline-block ml-3 text-primary" @click="onSearch" />
   </div>
 </template>
