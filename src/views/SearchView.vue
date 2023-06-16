@@ -7,7 +7,7 @@ import useObject from '@/composables/useObject'
 const router = useRouter()
 
 const { isSearching, search, currentPage, totalResults, resultPerPage, currentResult } = useSearch()
-const { getObjectsDetails, currentObjects } = useObject()
+const { isLoadingObjects, getObjectsDetails, currentObjects } = useObject()
 
 watch(currentResult, () => {
   getObjectsDetails(currentResult.value)
@@ -25,7 +25,10 @@ onMounted(() => {
 <template>
   <div>
     <TopBarSearch @search="search" />
-    <div class="flex w-full justify-center flex-col items-center">
+    <div v-if="isSearching || isLoadingObjects" class="flex justify-center mt-20">
+      <IconSpinner size="50" class="text-primary"></IconSpinner>
+    </div>
+    <div v-else class="flex w-full justify-center flex-col items-center">
       <div class="max-w-[1150px] w-full">
         <div class="font-neue-medium text-xl mt-8">{{ totalResults }} result for'{{ query }}'</div>
       </div>

@@ -1,6 +1,13 @@
-<script setup></script>
+<script setup>
+defineProps({
+  size: {
+    type: String,
+    default: '24'
+  }
+})
+</script>
 <template>
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24">
     <path
       fill="currentColor"
       d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"
