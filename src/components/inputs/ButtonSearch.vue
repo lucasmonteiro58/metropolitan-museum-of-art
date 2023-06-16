@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { onClickOutside } from '@vueuse/core'
 import { useVModel } from '@vueuse/core'
+import type { LocationQueryValue } from 'vue-router'
 
 const showInput = ref<Boolean>(false)
 const target = ref<HTMLElement | null>(null)
 
 const props = defineProps<{
-  modelValue: String
+  modelValue: String | LocationQueryValue[]
   full?: Boolean
   placeholder?: string
 }>()

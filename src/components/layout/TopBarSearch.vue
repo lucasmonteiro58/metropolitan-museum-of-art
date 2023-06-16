@@ -1,11 +1,23 @@
 <script setup lang="ts">
-const search = ref<String>('')
+const search = ref<any>('')
 
 const emit = defineEmits(['search'])
 
+const router = useRouter()
+const query = computed(() => {
+  return router.currentRoute.value?.query?.q
+})
+
 function onSearch() {
-  if (search.value) emit('search', search.value)
+  if (search.value) {
+    router.push({ path: '/search', query: { q: search.value } })
+    emit('search', search.value)
+  }
 }
+
+onMounted(() => {
+  if (query.value) search.value = query.value
+})
 </script>
 
 <template>
