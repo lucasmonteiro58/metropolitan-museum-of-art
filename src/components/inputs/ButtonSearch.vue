@@ -31,7 +31,7 @@ onClickOutside(target, () => {
 const computedClass = computed(() => {
   return {
     'sm:w-[500px] w-[90%]': showInput.value && !props.full,
-    'sm:w-full w-full': showInput.value && props.full,
+    'sm:w-full w-full sm:text-xl sm:px-12 sm:py-4': showInput.value && props.full,
     'sm:w-64 w-48 justify-between': !showInput.value
   }
 })
@@ -47,8 +47,8 @@ onMounted(() => {
   <div
     ref="target"
     @click="onClick"
+    class="sm:py-5 py-4 sm:px-16 px-8 bg-white font-neue-medium rounded-full sm:text-2xl text-xl flex items-center justify-center cursor-pointer transition-[width] duration-300 hover:bg-gray-100"
     :class="computedClass"
-    class="py-5 sm:px-16 px-8 bg-white font-neue-medium rounded-full text-2xl flex items-center justify-center cursor-pointer transition-[width] duration-300 hover:bg-gray-100"
   >
     <input
       v-if="showInput"

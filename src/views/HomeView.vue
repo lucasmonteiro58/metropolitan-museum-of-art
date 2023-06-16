@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { useTimeout } from '@vueuse/core'
 const showLoadingScreen = ref<Boolean>(true)
-const search = ref<String>('')
+const search = ref('')
+
+const router = useRouter()
 
 function onLoaded() {
   const ready = useTimeout(2000)
@@ -9,7 +11,7 @@ function onLoaded() {
 }
 
 function onSearch() {
-  console.log(search.value)
+  router.push({ path: '/search', query: { q: search.value } })
 }
 </script>
 

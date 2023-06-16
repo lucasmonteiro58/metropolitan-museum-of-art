@@ -5,3 +5,9 @@
 html {
   font-family: 'NeueHaas', sans-serif;
 }
+
+input,
+input:focus {
+  outline: none !important;
+  border: none !important;
+}

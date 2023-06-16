@@ -12,6 +12,7 @@ declare module 'vue' {
     IconLogo: typeof import('./components/icons/IconLogo.vue')['default']
     IconSearchAnimated: typeof import('./components/icons/IconSearchAnimated.vue')['default']
     IconSpinner: typeof import('./components/icons/IconSpinner.vue')['default']
+    ItemGallery: typeof import('./components/layout/ItemGallery.vue')['default']
     LoadingScreen: typeof import('./components/layout/LoadingScreen.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

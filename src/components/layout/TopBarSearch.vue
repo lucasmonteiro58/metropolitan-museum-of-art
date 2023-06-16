@@ -9,11 +9,13 @@ function onSearch() {
 </script>
 
 <template>
-  <div class="w-full bg-primary flex px-8 py-6 justify-center">
-    <IconLogo class="text-white select-none w-20 mr-auto"></IconLogo>
+  <div
+    class="w-full bg-primary flex sm:px-8 sm:py-4 px-4 py-4 justify-center sm:flex-row flex-col items-center"
+  >
+    <IconLogo class="text-white select-none sm:w-20 w-10 mx-auto sm:mx-0 sm:mr-auto"></IconLogo>
     <ButtonSearch
       v-model="search"
-      class="!w-[700px] mr-auto ml-14"
+      class="sm:!w-[700px] mr-auto sm:ml-14 w-full ml-0 sm:mt-0 mt-3"
       :full="true"
       placeholder="Artist, Art name or Location..."
       @search="onSearch"
