@@ -13,7 +13,7 @@ const emits = defineEmits(['loaded'])
 </script>
 
 <template>
-  <div class="bg-black absolute w-full h-screen">
+  <div class="bg-black absolute w-full h-screen max-h-screen">
     <a-scene vr-mode-ui="enabled: false" embedded class="w-full h-screen opacity-50">
       <a-assets>
         <video
