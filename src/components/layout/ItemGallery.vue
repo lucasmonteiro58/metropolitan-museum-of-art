@@ -1,16 +1,28 @@
-<script setup></script>
+<script setup lang="ts">
+const props = defineProps<{
+  obj: {
+    title: string
+    artistPrefix: string
+    artistDisplayName: string
+    primaryImage: string
+    primaryImageSmall: string
+  }
+}>()
+</script>
 
 <template>
   <div class="group w-fit cursor-pointer">
-    <div class="sm:w-[250px] w-full overflow-hidden">
+    <div class="sm:w-[250px] w-full overflow-hidden bg-gray-200 flex justify-center">
       <img
         class="h-[350px] object-cover transition-transform duration-500 ease-in-out group-hover:scale-125"
-        src="https://images.freeimages.com/images/large-previews/3b2/prague-conference-center-1056491.jpg"
+        :src="obj?.primaryImageSmall || obj?.primaryImage"
       />
     </div>
     <div class="sm:w-[250px] w-full font-neue-medium">
-      <div class="text-2xl leading-6 mt-2">Samurai Splendor: Sword Fittings from Edo Japan</div>
-      <div class="text-gray-600 mt-3">at The Met Fifth Avenue</div>
+      <div class="text-2xl leading-6 mt-2">{{ obj?.title }}</div>
+      <div class="text-gray-600 mt-3" v-if="obj.artistPrefix || obj.artistDisplayName">
+        {{ obj?.artistPrefix + ' ' + obj?.artistDisplayName }}
+      </div>
       <div
         class="w-fit text-3xl text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in mt-2 pr-4"
       >
