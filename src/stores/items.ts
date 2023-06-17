@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-import type { IFilter } from '@/types/IFilter'
 
 export const useItemsStore = defineStore('items', () => {
   const router = useRouter()
