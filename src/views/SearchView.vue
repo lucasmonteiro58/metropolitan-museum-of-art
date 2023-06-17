@@ -3,6 +3,7 @@
 import { Pagination } from 'flowbite-vue'
 
 const { search } = useSearch()
+const modalStore = useModalStore()
 
 const itemsStore = useItemsStore()
 const favoritesStore = useFavoritesStore()
@@ -68,5 +69,6 @@ onMounted(() => {
         </div>
       </div>
     </div>
+    <ModalDetails v-if="modalStore.show" :obj="modalStore.obj"></ModalDetails>
   </div>
 </template>

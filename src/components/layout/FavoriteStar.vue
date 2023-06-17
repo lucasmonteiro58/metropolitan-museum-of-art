@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import type { IObject } from '@/types/IObject'
+import { useFavoritesStore } from '@/stores/favorites'
+
 const props = defineProps<{
   obj: IObject
 }>()

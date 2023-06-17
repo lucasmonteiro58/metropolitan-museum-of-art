@@ -300,6 +300,7 @@
     "useItemsStore": true,
     "useFilterStore": true,
     "removeEmptyProperties": true,
-    "useAxios": true
+    "useAxios": true,
+    "useModalStore": true
   }
 }

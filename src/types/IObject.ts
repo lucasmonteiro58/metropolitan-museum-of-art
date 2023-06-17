@@ -35,7 +35,7 @@ export interface IObject {
   locus: string
   measurements: Measurement[]
   medium: string
-  metadataDate: Date
+  metadataDate?: Date
   objectBeginDate: number
   objectDate: string
   objectEndDate: number
