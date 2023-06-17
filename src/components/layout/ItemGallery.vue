@@ -15,6 +15,7 @@ defineProps<{
         class="h-[350px] object-cover transition-transform duration-500 ease-in-out group-hover:scale-125"
         :src="obj?.primaryImageSmall || obj?.primaryImage"
       />
+      <FavoriteStar :obj="obj" class="absolute top-2 right-2"></FavoriteStar>
       <div
         v-if="obj?.isPublicDomain"
         class="absolute bottom-2 right-2 text-white bg-primary rounded text-sm px-2 py-1"

@@ -6,8 +6,24 @@ export const useFavoritesStore = defineStore(
   () => {
     const favorites = ref<IObject[]>([])
 
+    function addFavorite(object: IObject) {
+      favorites.value.push(object)
+    }
+
+    function isFavorite(object: IObject) {
+      return favorites.value.some((item) => item.objectID === object.objectID)
+    }
+
+    function removeFavorite(object: IObject) {
+      const index = favorites.value.findIndex((item) => item.objectID === object.objectID)
+      favorites.value.splice(index, 1)
+    }
+
     return {
-      favorites
+      favorites,
+      addFavorite,
+      removeFavorite,
+      isFavorite
     }
   },
   {
