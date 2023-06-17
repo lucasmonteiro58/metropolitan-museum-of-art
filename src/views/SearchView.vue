@@ -31,7 +31,15 @@ onMounted(() => {
       <div
         class="flex gap-x-12 gap-y-12 flex-wrap mt-4 mb-8 max-w-[1200px] justify-center sm:px-0 px-4"
       >
-        <ItemGallery v-for="obj in currentObjects" :key="obj.GalleryNumber" :obj="obj" />
+        <ItemGallery
+          v-for="(obj, i) in currentObjects"
+          :key="obj.GalleryNumber"
+          :obj="obj"
+          v-motion
+          :initial="{ opacity: 0, scale: 0.8 }"
+          :enter="{ opacity: 1, y: 0, scale: 1 }"
+          :delay="300 * i"
+        />
       </div>
       <div class="max-w-[1200px] justify-center sm:px-0 px-4 mb-10 mt-5">
         <Pagination

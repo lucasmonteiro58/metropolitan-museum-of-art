@@ -17,7 +17,7 @@ const open = ref(true)
         :class="open ? 'rotate-180' : ''"
       />
     </div>
-    <div v-if="open" v-motion-slide-top>
+    <div v-if="open" v-motion :initial="{ opacity: 0, y: -20 }" :enter="{ opacity: 1, y: 0 }">
       <div class="w-full flex flex-wrap justify-star mt-2 gap-x-8 gap-y-6">
         <div class="sm:w-1/4 w-full">
           <label for="location">Location</label>

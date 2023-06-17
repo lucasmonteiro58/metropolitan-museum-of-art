@@ -10,7 +10,7 @@ export default function useObjects() {
     isLoadingObjects.value = true
     currentObjects.value = []
     Promise.all(
-      objectIDs.map(async (objectID) => {
+      objectIDs?.map(async (objectID) => {
         const url = `${baseUrl}objects/${objectID}`
         const response = await fetch(url)
         const data = await response.json()
