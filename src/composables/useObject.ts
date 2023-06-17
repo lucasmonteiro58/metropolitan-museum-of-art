@@ -1,13 +1,14 @@
 import type { IObject } from '@/types/IObject'
 
 export default function useObjects() {
-  const currentObjects = ref<IObject[]>([])
   const isLoadingObjects = ref(false)
   const axios = useAxios()
 
+  const itemsStore = useItemsStore()
+
   async function getObjectsDetails(objectIDs: number[]) {
     isLoadingObjects.value = true
-    currentObjects.value = []
+    itemsStore.currentObjects = []
     if (!objectIDs) {
       isLoadingObjects.value = false
       return
@@ -16,7 +17,7 @@ export default function useObjects() {
       objectIDs?.map(async (objectID) => {
         const response = await axios.get(`/objects/${objectID}`)
         const data = response?.data as IObject
-        currentObjects.value.push(data)
+        itemsStore.currentObjects.push(data)
       })
     ).then(() => {
       isLoadingObjects.value = false
@@ -24,7 +25,6 @@ export default function useObjects() {
   }
 
   return {
-    currentObjects,
     isLoadingObjects,
     getObjectsDetails
   }

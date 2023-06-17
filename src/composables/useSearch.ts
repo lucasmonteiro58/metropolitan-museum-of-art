@@ -17,6 +17,7 @@ export default function useSearch() {
   async function search() {
     try {
       itemsStore.isSearching = true
+      resetResults()
       const response = await axios.get('/search', {
         params: generateUrlParams()
       })
@@ -30,6 +31,13 @@ export default function useSearch() {
       filterStore.changeQuery()
       itemsStore.isSearching = false
     }
+  }
+
+  function resetResults() {
+    itemsStore.results = []
+    itemsStore.resultsUnpaginated = []
+    itemsStore.totalResults = 0
+    itemsStore.currentPage = 1
   }
 
   watch(query, () => {

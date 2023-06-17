@@ -8,11 +8,19 @@ defineProps<{
 
 <template>
   <div class="group sm:w-fit sm:min-w-0 min-w-full cursor-pointer">
-    <div class="sm:w-[250px] w-full min-w-full overflow-hidden bg-gray-200 flex justify-center">
+    <div
+      class="sm:w-[250px] w-full min-w-full overflow-hidden bg-gray-200 flex justify-center relative"
+    >
       <img
         class="h-[350px] object-cover transition-transform duration-500 ease-in-out group-hover:scale-125"
         :src="obj?.primaryImageSmall || obj?.primaryImage"
       />
+      <div
+        v-if="obj?.isPublicDomain"
+        class="absolute bottom-2 right-2 text-white bg-primary rounded text-sm px-2 py-1"
+      >
+        Public
+      </div>
     </div>
     <div class="sm:w-[250px] w-full font-neue-medium">
       <div class="text-2xl leading-6 mt-2">{{ obj?.title }}</div>

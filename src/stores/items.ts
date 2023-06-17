@@ -1,3 +1,4 @@
+import type { IObject } from '@/types/IObject'
 import { defineStore } from 'pinia'
 
 export const useItemsStore = defineStore('items', () => {
@@ -8,6 +9,7 @@ export const useItemsStore = defineStore('items', () => {
   const totalResults = ref<number>(0)
   const currentPage = ref<number>(1)
   const resultPerPage = ref<number>(8)
+  const currentObjects = ref<IObject[]>([])
 
   const query = computed(() => {
     return router.currentRoute.value?.query?.q
@@ -22,6 +24,7 @@ export const useItemsStore = defineStore('items', () => {
   })
 
   return {
+    currentObjects,
     results,
     resultsUnpaginated,
     isSearching,

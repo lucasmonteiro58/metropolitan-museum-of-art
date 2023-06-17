@@ -6,7 +6,11 @@ const { search } = useSearch()
 
 const itemsStore = useItemsStore()
 const computedCurrentResult = computed(() => itemsStore.currentResult)
-const { isLoadingObjects, getObjectsDetails, currentObjects } = useObject()
+const { isLoadingObjects, getObjectsDetails } = useObject()
+
+const currentObjects = computed(() => {
+  return itemsStore.currentObjects
+})
 
 watch(computedCurrentResult, () => {
   getObjectsDetails(computedCurrentResult.value)
@@ -27,7 +31,8 @@ onMounted(() => {
     <div v-else class="flex w-full justify-center flex-col items-center">
       <div class="max-w-[1150px] w-full">
         <div class="font-neue-medium text-xl mt-8 px-4 sm:px-0">
-          {{ itemsStore.totalResults }} result for'{{ itemsStore.query }}'
+          {{ itemsStore.totalResults }} results
+          <span v-if="itemsStore.query">for'{{ itemsStore.query }}'</span>
         </div>
       </div>
       <div
