@@ -3,6 +3,10 @@
 import { TriStateCheckbox } from 'vue-tri-state-checkbox'
 import 'vue-tri-state-checkbox/dist/style.css'
 const open = ref(true)
+
+const { onFilter } = useFilter()
+
+const itemsStore = useItemsStore()
 </script>
 
 <template>
@@ -15,27 +19,37 @@ const open = ref(true)
       <IconCheveron
         class="transform transition-all duration-300"
         :class="open ? 'rotate-180' : ''"
+        width="40"
       />
     </div>
     <div v-if="open" v-motion :initial="{ opacity: 0, y: -20 }" :enter="{ opacity: 1, y: 0 }">
       <div class="w-full flex flex-wrap justify-star mt-2 gap-x-8 gap-y-6">
         <div class="sm:w-1/4 w-full">
           <label for="location">Location</label>
-          <input class="w-full border border-solid border-gray-300 px-4 py-2 rounded" type="text" />
+          <input
+            v-model="itemsStore.filter.location"
+            class="w-full border border-solid border-gray-300 px-4 py-2 rounded"
+            type="text"
+          />
         </div>
         <div class="sm:w-1/4 w-full">
           <label for="artist">Artist</label>
           <input
+            v-model="itemsStore.filter.artist"
             class="w-full border border-solid border-gray-300 px-4 py-2 rounded"
             type="artist"
           />
         </div>
         <div class="sm:w-[140px] w-1/2 flex flex-col justify-end">
-          <TriStateCheckbox label="Public" color="#e4012b" />
-          <TriStateCheckbox label="Only has Image" color="#e4012b" />
+          <TriStateCheckbox
+            v-model="itemsStore.filter.hasImages"
+            label="Only has Image"
+            color="#e4012b"
+          />
         </div>
         <div class="flex flex-col justify-end w-full sm:w-fit">
           <button
+            @click="onFilter"
             class="bg-primary text-white px-12 py-2 rounded font-neue-medium hover:opacity-90 w-full"
           >
             Filter

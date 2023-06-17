@@ -2,16 +2,18 @@
 /*@ts-ignore*/
 import { Pagination } from 'flowbite-vue'
 
-const { isSearching, search, currentPage, totalResults, resultPerPage, currentResult, query } =
-  useSearch()
+const { search } = useSearch()
+
+const itemsStore = useItemsStore()
+const computedCurrentResult = computed(() => itemsStore.currentResult)
 const { isLoadingObjects, getObjectsDetails, currentObjects } = useObject()
 
-watch(currentResult, () => {
-  getObjectsDetails(currentResult.value)
+watch(computedCurrentResult, () => {
+  getObjectsDetails(computedCurrentResult.value)
 })
 
 onMounted(() => {
-  search(query.value)
+  search()
 })
 </script>
 
@@ -19,13 +21,13 @@ onMounted(() => {
   <div class="flex flex-col justify-center items-center">
     <TopBarSearch @search="search" />
     <FilterSection />
-    <div v-if="isSearching || isLoadingObjects" class="flex justify-center mt-20">
+    <div v-if="itemsStore.isSearching || isLoadingObjects" class="flex justify-center mt-20">
       <IconSpinner size="50" class="text-primary"></IconSpinner>
     </div>
     <div v-else class="flex w-full justify-center flex-col items-center">
       <div class="max-w-[1150px] w-full">
         <div class="font-neue-medium text-xl mt-8 px-4 sm:px-0">
-          {{ totalResults }} result for'{{ query }}'
+          {{ itemsStore.totalResults }} result for'{{ itemsStore.query }}'
         </div>
       </div>
       <div
@@ -43,11 +45,11 @@ onMounted(() => {
       </div>
       <div class="max-w-[1200px] justify-center sm:px-0 px-4 mb-10 mt-5">
         <Pagination
-          v-if="totalResults > 0"
+          v-if="itemsStore.totalResults > 0"
           class="w-400px"
-          v-model="currentPage"
-          :total-items="totalResults"
-          :per-page="resultPerPage"
+          v-model="itemsStore.currentPage"
+          :total-items="itemsStore.totalResults"
+          :per-page="itemsStore.resultPerPage"
           show-icons
           :slice-length="1"
           previous-label=""

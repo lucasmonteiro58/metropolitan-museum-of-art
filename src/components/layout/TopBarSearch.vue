@@ -15,6 +15,10 @@ function onSearch() {
   }
 }
 
+watch(search, () => {
+  if (search.value) router.push({ path: '/search', query: { q: search.value } })
+})
+
 onMounted(() => {
   if (query.value) search.value = query.value
 })

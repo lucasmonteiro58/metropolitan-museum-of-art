@@ -9,6 +9,10 @@ export default function useObjects() {
   async function getObjectsDetails(objectIDs: number[]) {
     isLoadingObjects.value = true
     currentObjects.value = []
+    if (!objectIDs) {
+      isLoadingObjects.value = false
+      return
+    }
     Promise.all(
       objectIDs?.map(async (objectID) => {
         const url = `${baseUrl}objects/${objectID}`

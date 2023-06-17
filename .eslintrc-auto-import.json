@@ -295,6 +295,8 @@
     "usePaginator": true,
     "useSearch": true,
     "useObject": true,
-    "useFavoritesStore": true
+    "useFavoritesStore": true,
+    "useFilter": true,
+    "useItemsStore": true
   }
 }
