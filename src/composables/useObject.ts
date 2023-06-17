@@ -1,10 +1,9 @@
 import type { IObject } from '@/types/IObject'
 
 export default function useObjects() {
-  const baseUrl: string = import.meta.env.VITE_API_URL as string
-
   const currentObjects = ref<IObject[]>([])
   const isLoadingObjects = ref(false)
+  const axios = useAxios()
 
   async function getObjectsDetails(objectIDs: number[]) {
     isLoadingObjects.value = true
@@ -15,9 +14,8 @@ export default function useObjects() {
     }
     Promise.all(
       objectIDs?.map(async (objectID) => {
-        const url = `${baseUrl}objects/${objectID}`
-        const response = await fetch(url)
-        const data = await response.json()
+        const response = await axios.get(`/objects/${objectID}`)
+        const data = response?.data as IObject
         currentObjects.value.push(data)
       })
     ).then(() => {

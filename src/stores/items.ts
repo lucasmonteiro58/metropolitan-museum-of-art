@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 export const useItemsStore = defineStore('items', () => {
   const router = useRouter()
   const results = ref<number[][]>([])
+  const resultsUnpaginated = ref<number[]>([])
   const isSearching = ref<boolean>(false)
   const totalResults = ref<number>(0)
   const currentPage = ref<number>(1)
@@ -22,6 +23,7 @@ export const useItemsStore = defineStore('items', () => {
 
   return {
     results,
+    resultsUnpaginated,
     isSearching,
     totalResults,
     currentPage,

@@ -1,8 +1,7 @@
 <script setup lang="ts">
 const open = ref(true)
 
-const { onFilter } = useFilter()
-
+const { search } = useSearch()
 const filterStore = useFilterStore()
 </script>
 
@@ -51,7 +50,7 @@ const filterStore = useFilterStore()
         </div>
         <div class="flex flex-col justify-end w-full sm:w-fit">
           <button
-            @click="onFilter"
+            @click="search"
             class="bg-primary text-white px-12 py-2 rounded font-neue-medium hover:opacity-90 w-full"
           >
             Filter

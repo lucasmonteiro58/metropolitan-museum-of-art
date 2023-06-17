@@ -2,12 +2,10 @@ import type { ISearch } from '@/types/ISearch'
 import usePaginator from './usePaginator'
 
 export default function useSearch() {
-  const baseUrl: string = import.meta.env.VITE_API_URL as string
-
   const itemsStore = useItemsStore()
   const filterStore = useFilterStore()
   const router = useRouter()
-
+  const axios = useAxios()
   const { generateUrlParams } = useFilter()
 
   const query = computed(() => {
@@ -17,11 +15,13 @@ export default function useSearch() {
   const { paginate } = usePaginator()
 
   async function search() {
-    const url = `${baseUrl}search?${generateUrlParams()}`
     try {
       itemsStore.isSearching = true
-      const response = await fetch(url)
-      const data = (await response.json()) as ISearch
+      const response = await axios.get('/search', {
+        params: generateUrlParams()
+      })
+      const data = response?.data as ISearch
+      itemsStore.resultsUnpaginated = data.objectIDs
       itemsStore.results = paginate(data, itemsStore.resultPerPage)
       itemsStore.totalResults = data.total
     } catch (error) {

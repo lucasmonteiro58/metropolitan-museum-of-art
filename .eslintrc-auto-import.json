@@ -299,6 +299,7 @@
     "useFilter": true,
     "useItemsStore": true,
     "useFilterStore": true,
-    "removeEmptyProperties": true
+    "removeEmptyProperties": true,
+    "useAxios": true
   }
 }
