@@ -15,7 +15,7 @@ export const useFilterStore = defineStore('filter', () => {
     if (search.value) query.q = search.value
     if (location.value) query.geoLocation = location.value
     if (artist.value) query.artistOrCulture = artist.value
-    if (hasImages.value) query.hasImages = hasImages.value ? 'true' : 'false'
+    if (hasImages.value) query.hasImages = hasImages.value ? 'true' : ''
 
     router.push({
       path: '/search',

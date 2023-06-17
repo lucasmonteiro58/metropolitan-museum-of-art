@@ -1,7 +1,4 @@
 <script setup lang="ts">
-/* @ts-ignore */
-import { TriStateCheckbox } from 'vue-tri-state-checkbox'
-import 'vue-tri-state-checkbox/dist/style.css'
 const open = ref(true)
 
 const { onFilter } = useFilter()
@@ -30,6 +27,7 @@ const filterStore = useFilterStore()
             v-model="filterStore.location"
             class="w-full border border-solid border-gray-300 px-4 py-2 rounded"
             type="text"
+            id="location"
           />
         </div>
         <div class="sm:w-1/4 w-full">
@@ -37,15 +35,19 @@ const filterStore = useFilterStore()
           <input
             v-model="filterStore.artist"
             class="w-full border border-solid border-gray-300 px-4 py-2 rounded"
-            type="artist"
+            type="text"
+            id="artist"
           />
         </div>
-        <div class="sm:w-[140px] w-1/2 flex flex-col justify-end">
-          <TriStateCheckbox
+        <div class="sm:w-[140px] w-1/2 flex items-end">
+          <input
             v-model="filterStore.hasImages"
-            label="Only has Image"
-            color="#e4012b"
+            type="checkbox"
+            id="onlyImage"
+            class="mr-2 mb-1 h-4 w-4 !bg-red-500 checked:!bg-red-500"
           />
+
+          <label for="onlyImage">Only has Image</label>
         </div>
         <div class="flex flex-col justify-end w-full sm:w-fit">
           <button

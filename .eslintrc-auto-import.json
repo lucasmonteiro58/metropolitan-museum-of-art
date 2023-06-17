@@ -298,6 +298,7 @@
     "useFavoritesStore": true,
     "useFilter": true,
     "useItemsStore": true,
-    "useFilterStore": true
+    "useFilterStore": true,
+    "removeEmptyProperties": true
   }
 }

@@ -1,3 +1,4 @@
+import type { IFilter } from '@/types/IFilter'
 import type { ISearch } from '@/types/ISearch'
 
 export default function useFilter() {
@@ -11,13 +12,13 @@ export default function useFilter() {
   const router = useRouter()
 
   function generateUrlParams() {
-    const _query = {
-      hasImages: filterStore.hasImages ? 'true' : 'false',
-      geoLocation: filterStore.location,
-      artistOrCulture: filterStore.artist,
-      q: itemsStore.query as string
-    }
-    const urlParams = new URLSearchParams(_query)
+    const _query: IFilter = {}
+    if (filterStore.search) _query.q = filterStore.search as string
+    if (filterStore.location) _query.geoLocation = filterStore.location
+    if (filterStore.artist) _query.artistOrCulture = filterStore.artist
+    if (filterStore.hasImages) _query.hasImages = filterStore.hasImages ? 'true' : ''
+
+    const urlParams = new URLSearchParams(_query as URLSearchParams)
     return urlParams.toString()
   }
 
