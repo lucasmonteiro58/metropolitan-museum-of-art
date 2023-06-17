@@ -16,14 +16,17 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
+  <div class="flex flex-col justify-center items-center">
     <TopBarSearch @search="search" />
+    <FilterSection />
     <div v-if="isSearching || isLoadingObjects" class="flex justify-center mt-20">
       <IconSpinner size="50" class="text-primary"></IconSpinner>
     </div>
     <div v-else class="flex w-full justify-center flex-col items-center">
       <div class="max-w-[1150px] w-full">
-        <div class="font-neue-medium text-xl mt-8">{{ totalResults }} result for'{{ query }}'</div>
+        <div class="font-neue-medium text-xl mt-8 px-4 sm:px-0">
+          {{ totalResults }} result for'{{ query }}'
+        </div>
       </div>
       <div
         class="flex gap-x-12 gap-y-12 flex-wrap mt-4 mb-8 max-w-[1200px] justify-center sm:px-0 px-4"

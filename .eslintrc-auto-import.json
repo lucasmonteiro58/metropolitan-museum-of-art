@@ -294,6 +294,7 @@
     "whenever": true,
     "usePaginator": true,
     "useSearch": true,
-    "useObject": true
+    "useObject": true,
+    "useFavoritesStore": true
   }
 }

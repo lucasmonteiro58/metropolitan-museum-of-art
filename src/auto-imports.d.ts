@@ -168,6 +168,7 @@ declare global {
   const useEventSource: typeof import('@vueuse/core')['useEventSource']
   const useEyeDropper: typeof import('@vueuse/core')['useEyeDropper']
   const useFavicon: typeof import('@vueuse/core')['useFavicon']
+  const useFavoritesStore: typeof import('./stores/favorites')['useFavoritesStore']
   const useFetch: typeof import('@vueuse/core')['useFetch']
   const useFileDialog: typeof import('@vueuse/core')['useFileDialog']
   const useFileSystemAccess: typeof import('@vueuse/core')['useFileSystemAccess']
@@ -437,7 +438,6 @@ declare module 'vue' {
     readonly useColorMode: UnwrapRef<typeof import('@vueuse/core')['useColorMode']>
     readonly useConfirmDialog: UnwrapRef<typeof import('@vueuse/core')['useConfirmDialog']>
     readonly useCounter: UnwrapRef<typeof import('@vueuse/core')['useCounter']>
-    readonly useCounterStore: UnwrapRef<typeof import('./stores/counter')['useCounterStore']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVar: UnwrapRef<typeof import('@vueuse/core')['useCssVar']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
@@ -466,6 +466,7 @@ declare module 'vue' {
     readonly useEventSource: UnwrapRef<typeof import('@vueuse/core')['useEventSource']>
     readonly useEyeDropper: UnwrapRef<typeof import('@vueuse/core')['useEyeDropper']>
     readonly useFavicon: UnwrapRef<typeof import('@vueuse/core')['useFavicon']>
+    readonly useFavoritesStore: UnwrapRef<typeof import('./stores/favorites')['useFavoritesStore']>
     readonly useFetch: UnwrapRef<typeof import('@vueuse/core')['useFetch']>
     readonly useFileDialog: UnwrapRef<typeof import('@vueuse/core')['useFileDialog']>
     readonly useFileSystemAccess: UnwrapRef<typeof import('@vueuse/core')['useFileSystemAccess']>
@@ -729,7 +730,6 @@ declare module '@vue/runtime-core' {
     readonly useColorMode: UnwrapRef<typeof import('@vueuse/core')['useColorMode']>
     readonly useConfirmDialog: UnwrapRef<typeof import('@vueuse/core')['useConfirmDialog']>
     readonly useCounter: UnwrapRef<typeof import('@vueuse/core')['useCounter']>
-    readonly useCounterStore: UnwrapRef<typeof import('./stores/counter')['useCounterStore']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVar: UnwrapRef<typeof import('@vueuse/core')['useCssVar']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
@@ -758,6 +758,7 @@ declare module '@vue/runtime-core' {
     readonly useEventSource: UnwrapRef<typeof import('@vueuse/core')['useEventSource']>
     readonly useEyeDropper: UnwrapRef<typeof import('@vueuse/core')['useEyeDropper']>
     readonly useFavicon: UnwrapRef<typeof import('@vueuse/core')['useFavicon']>
+    readonly useFavoritesStore: UnwrapRef<typeof import('./stores/favorites')['useFavoritesStore']>
     readonly useFetch: UnwrapRef<typeof import('@vueuse/core')['useFetch']>
     readonly useFileDialog: UnwrapRef<typeof import('@vueuse/core')['useFileDialog']>
     readonly useFileSystemAccess: UnwrapRef<typeof import('@vueuse/core')['useFileSystemAccess']>

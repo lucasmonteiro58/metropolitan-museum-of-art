@@ -9,6 +9,8 @@ declare module 'vue' {
   export interface GlobalComponents {
     BackgroundVideo: typeof import('./components/layout/BackgroundVideo.vue')['default']
     ButtonSearch: typeof import('./components/inputs/ButtonSearch.vue')['default']
+    FilterSection: typeof import('./components/layout/FilterSection.vue')['default']
+    IconCheveron: typeof import('./components/icons/IconCheveron.vue')['default']
     IconLogo: typeof import('./components/icons/IconLogo.vue')['default']
     IconSearchAnimated: typeof import('./components/icons/IconSearchAnimated.vue')['default']
     IconSpinner: typeof import('./components/icons/IconSpinner.vue')['default']
