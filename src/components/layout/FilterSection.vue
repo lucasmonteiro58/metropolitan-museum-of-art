@@ -6,7 +6,7 @@ const open = ref(true)
 
 const { onFilter } = useFilter()
 
-const itemsStore = useItemsStore()
+const filterStore = useFilterStore()
 </script>
 
 <template>
@@ -27,7 +27,7 @@ const itemsStore = useItemsStore()
         <div class="sm:w-1/4 w-full">
           <label for="location">Location</label>
           <input
-            v-model="itemsStore.filter.location"
+            v-model="filterStore.location"
             class="w-full border border-solid border-gray-300 px-4 py-2 rounded"
             type="text"
           />
@@ -35,14 +35,14 @@ const itemsStore = useItemsStore()
         <div class="sm:w-1/4 w-full">
           <label for="artist">Artist</label>
           <input
-            v-model="itemsStore.filter.artist"
+            v-model="filterStore.artist"
             class="w-full border border-solid border-gray-300 px-4 py-2 rounded"
             type="artist"
           />
         </div>
         <div class="sm:w-[140px] w-1/2 flex flex-col justify-end">
           <TriStateCheckbox
-            v-model="itemsStore.filter.hasImages"
+            v-model="filterStore.hasImages"
             label="Only has Image"
             color="#e4012b"
           />

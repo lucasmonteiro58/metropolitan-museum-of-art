@@ -5,6 +5,7 @@ export default function useSearch() {
   const baseUrl: string = import.meta.env.VITE_API_URL as string
 
   const itemsStore = useItemsStore()
+  const filterStore = useFilterStore()
   const router = useRouter()
 
   const { generateUrlParams } = useFilter()
@@ -26,6 +27,7 @@ export default function useSearch() {
     } catch (error) {
       console.log(error)
     } finally {
+      filterStore.changeQuery()
       itemsStore.isSearching = false
     }
   }

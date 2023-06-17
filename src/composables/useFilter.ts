@@ -6,13 +6,15 @@ export default function useFilter() {
   const { paginate } = usePaginator()
   const isFiltering = ref<boolean>(false)
   const itemsStore = useItemsStore()
+
+  const filterStore = useFilterStore()
   const router = useRouter()
 
   function generateUrlParams() {
     const _query = {
-      hasImages: itemsStore.filter.hasImages ? 'true' : 'false',
-      geoLocation: itemsStore.filter.location,
-      artistOrCulture: itemsStore.filter.artist,
+      hasImages: filterStore.hasImages ? 'true' : 'false',
+      geoLocation: filterStore.location,
+      artistOrCulture: filterStore.artist,
       q: itemsStore.query as string
     }
     const urlParams = new URLSearchParams(_query)
@@ -32,6 +34,7 @@ export default function useFilter() {
       console.log(error)
     } finally {
       isFiltering.value = false
+      filterStore.changeQuery()
     }
   }
 

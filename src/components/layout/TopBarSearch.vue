@@ -1,7 +1,7 @@
 <script setup lang="ts">
-const search = ref<any>('')
-
 const emit = defineEmits(['search'])
+
+const filterStore = useFilterStore()
 
 const router = useRouter()
 const query = computed(() => {
@@ -9,18 +9,13 @@ const query = computed(() => {
 })
 
 function onSearch() {
-  if (search.value) {
-    router.push({ path: '/search', query: { q: search.value } })
-    emit('search', search.value)
+  if (filterStore.search) {
+    emit('search', filterStore.search)
   }
 }
 
-watch(search, () => {
-  if (search.value) router.push({ path: '/search', query: { q: search.value } })
-})
-
 onMounted(() => {
-  if (query.value) search.value = query.value
+  if (query.value) filterStore.search = query.value as string
 })
 </script>
 
@@ -33,7 +28,7 @@ onMounted(() => {
     ></RouterLink>
 
     <ButtonSearch
-      v-model="search"
+      v-model="filterStore.search"
       class="sm:!w-[700px] mr-auto sm:ml-14 w-full ml-0 sm:mt-0 mt-3"
       :full="true"
       placeholder="Artist, Art name or Location..."

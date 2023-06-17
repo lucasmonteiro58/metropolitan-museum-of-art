@@ -9,12 +9,6 @@ export const useItemsStore = defineStore('items', () => {
   const currentPage = ref<number>(1)
   const resultPerPage = ref<number>(8)
 
-  const filter = reactive<IFilter>({
-    location: '',
-    artist: '',
-    hasImages: false
-  })
-
   const query = computed(() => {
     return router.currentRoute.value?.query?.q
   })
@@ -35,7 +29,6 @@ export const useItemsStore = defineStore('items', () => {
     resultPerPage,
     currentResult,
     totalPages,
-    query,
-    filter
+    query
   }
 })

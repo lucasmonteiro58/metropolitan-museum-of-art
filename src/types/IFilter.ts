@@ -1,5 +1,6 @@
 export interface IFilter {
-  location: string
-  artist: string
-  hasImages: boolean | null
+  q?: string
+  geoLocation?: string
+  artistOrCulture?: string
+  hasImages?: string
 }
