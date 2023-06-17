@@ -1,14 +1,16 @@
+import type { ISearch } from '@/types/ISearch'
 import type { LocationQueryValue } from 'vue-router'
 import usePaginator from './usePaginator'
 
 export default function useSearch() {
   const baseUrl: string = import.meta.env.VITE_API_URL as string
 
-  const results = ref<any[]>([])
-  const isSearching = ref(false)
-  const totalResults = ref(0)
-  const currentPage = ref(1)
-  const resultPerPage = ref(8)
+  const router = useRouter()
+  const results = ref<number[][]>([])
+  const isSearching = ref<boolean>(false)
+  const totalResults = ref<number>(0)
+  const currentPage = ref<number>(1)
+  const resultPerPage = ref<number>(8)
 
   const { paginate } = usePaginator()
 
@@ -20,12 +22,16 @@ export default function useSearch() {
     return Math.ceil(totalResults.value / resultPerPage.value)
   })
 
+  const query = computed(() => {
+    return router.currentRoute.value?.query?.q
+  })
+
   async function search(query: string | LocationQueryValue[] | LocationQueryValue | undefined) {
     const url = `${baseUrl}search?q=${query}`
     try {
       isSearching.value = true
       const response = await fetch(url)
-      const data = await response.json()
+      const data = (await response.json()) as ISearch
       results.value = paginate(data, resultPerPage.value)
       totalResults.value = data.total
     } catch (error) {
@@ -43,6 +49,7 @@ export default function useSearch() {
     currentPage,
     currentResult,
     totalPages,
-    resultPerPage
+    resultPerPage,
+    query
   }
 }

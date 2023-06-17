@@ -1,6 +1,7 @@
-// @ts-nocheck
+import type { ISearch } from '@/types/ISearch'
+
 export default function usePaginator() {
-  function paginate(data, itemsPerPage) {
+  function paginate(data: ISearch, itemsPerPage: number) {
     const { objectIDs } = data
     if (!objectIDs) return []
     const pages = []

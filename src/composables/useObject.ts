@@ -1,10 +1,12 @@
+import type { IObject } from '@/types/IObject'
+
 export default function useObjects() {
   const baseUrl: string = import.meta.env.VITE_API_URL as string
 
-  const currentObjects = ref<any[]>([])
+  const currentObjects = ref<IObject[]>([])
   const isLoadingObjects = ref(false)
 
-  async function getObjectsDetails(objectIDs: string[]) {
+  async function getObjectsDetails(objectIDs: number[]) {
     isLoadingObjects.value = true
     currentObjects.value = []
     Promise.all(

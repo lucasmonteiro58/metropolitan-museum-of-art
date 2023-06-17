@@ -1,20 +1,13 @@
 <script setup lang="ts">
 /*@ts-ignore*/
 import { Pagination } from 'flowbite-vue'
-import useSearch from '@/composables/useSearch'
-import useObject from '@/composables/useObject'
 
-const router = useRouter()
-
-const { isSearching, search, currentPage, totalResults, resultPerPage, currentResult } = useSearch()
+const { isSearching, search, currentPage, totalResults, resultPerPage, currentResult, query } =
+  useSearch()
 const { isLoadingObjects, getObjectsDetails, currentObjects } = useObject()
 
 watch(currentResult, () => {
   getObjectsDetails(currentResult.value)
-})
-
-const query = computed(() => {
-  return router.currentRoute.value?.query?.q
 })
 
 onMounted(() => {
@@ -35,7 +28,7 @@ onMounted(() => {
       <div
         class="flex gap-x-12 gap-y-12 flex-wrap mt-4 mb-8 max-w-[1200px] justify-center sm:px-0 px-4"
       >
-        <ItemGallery v-for="obj in currentObjects" :key="obj" :obj="obj" />
+        <ItemGallery v-for="obj in currentObjects" :key="obj.GalleryNumber" :obj="obj" />
       </div>
       <div class="max-w-[1200px] justify-center sm:px-0 px-4 mb-10 mt-5">
         <Pagination

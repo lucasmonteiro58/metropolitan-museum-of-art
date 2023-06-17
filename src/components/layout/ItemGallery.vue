@@ -1,18 +1,14 @@
 <script setup lang="ts">
-const props = defineProps<{
-  obj: {
-    title: string
-    artistPrefix: string
-    artistDisplayName: string
-    primaryImage: string
-    primaryImageSmall: string
-  }
+import type { IObject } from '@/types/IObject'
+
+defineProps<{
+  obj: IObject
 }>()
 </script>
 
 <template>
-  <div class="group w-fit cursor-pointer">
-    <div class="sm:w-[250px] w-full overflow-hidden bg-gray-200 flex justify-center">
+  <div class="group sm:w-fit sm:min-w-0 min-w-full cursor-pointer">
+    <div class="sm:w-[250px] w-full min-w-full overflow-hidden bg-gray-200 flex justify-center">
       <img
         class="h-[350px] object-cover transition-transform duration-500 ease-in-out group-hover:scale-125"
         :src="obj?.primaryImageSmall || obj?.primaryImage"
