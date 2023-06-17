@@ -6,7 +6,7 @@ const filterStore = useFilterStore()
 </script>
 
 <template>
-  <div class="max-w-[1150px] w-full mt-4 sm:px-0 px-4">
+  <div class="max-w-[1150px] w-full mt-4 sm:px-4 px-4 xl:px-0">
     <div
       class="font-neue-medium text-2xl w-full flex justify-between cursor-pointer"
       @click="open = !open"

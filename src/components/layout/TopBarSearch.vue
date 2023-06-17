@@ -2,6 +2,7 @@
 const emit = defineEmits(['search'])
 
 const filterStore = useFilterStore()
+const favoritesStore = useFavoritesStore()
 
 const router = useRouter()
 const query = computed(() => {
@@ -12,6 +13,12 @@ function onSearch() {
   if (filterStore.search) {
     emit('search', filterStore.search)
   }
+}
+
+function openFavorites() {
+  favoritesStore.showingFavorites
+    ? (favoritesStore.showingFavorites = false)
+    : (favoritesStore.showingFavorites = true)
 }
 
 onMounted(() => {
@@ -34,5 +41,13 @@ onMounted(() => {
       placeholder="Artist, Art name or Location..."
       @search="onSearch"
     />
+    <div class="w-full sm:w-fit flex justify-center ml-5 mt-4 sm:ml-8 sm:mr-0 sm:block sm:mb-2">
+      <button
+        class="text-white font-neue-medium border border-white px-4 py-2 rounded hover:bg-[#ffffff1a]"
+        @click="openFavorites"
+      >
+        Favorites
+      </button>
+    </div>
   </div>
 </template>

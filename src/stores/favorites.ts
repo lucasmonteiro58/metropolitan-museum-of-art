@@ -5,6 +5,7 @@ export const useFavoritesStore = defineStore(
   'favorites',
   () => {
     const favorites = ref<IObject[]>([])
+    const showingFavorites = ref(true)
 
     function addFavorite(object: IObject) {
       favorites.value.push(object)
@@ -20,6 +21,7 @@ export const useFavoritesStore = defineStore(
     }
 
     return {
+      showingFavorites,
       favorites,
       addFavorite,
       removeFavorite,
