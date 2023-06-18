@@ -45,7 +45,7 @@ onMounted(() => {
     >
       <div
         ref="modalRef"
-        class="bg-white w-full mx-4 rounded-lg lg:max-w-[500px] relative py-4"
+        class="bg-white w-full mx-0 sm:mx-4 rounded-lg lg:max-w-[500px] relative py-4"
         v-motion
         :initial="{ opacity: 0, scale: 0.8 }"
         :enter="{ opacity: 1, scale: 1 }"
@@ -64,7 +64,7 @@ onMounted(() => {
         </div>
 
         <div
-          class="modal flex flex-col max-h-[80vh] mx-4 mr-2 sm:ml-4 md:mx-4 md:px-4 overflow-y-auto items-center"
+          class="modal flex flex-col max-h-[80vh] mx-4 mr-4 sm:ml-4 md:mx-4 md:px-4 overflow-y-auto items-center"
         >
           <div
             v-if="obj?.primaryImage || obj?.primaryImageSmall"
