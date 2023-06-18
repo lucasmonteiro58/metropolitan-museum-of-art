@@ -52,7 +52,7 @@ onMounted(() => {
       >
         <div class="relative">
           <h1
-            class="text-2xl font-neue-medium mb-5 mx-4 pr-10 sm:ml-4 md:mx-4 md:px-4 text-primary leading-6"
+            class="text-2xl font-neue-medium mb-5 mx-4 pr-10 sm:ml-4 md:mx-4 md:px-4 text-primary leading-6 max-h-[98px] overflow-hidden"
           >
             {{ obj?.title }}
           </h1>
