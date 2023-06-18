@@ -38,6 +38,6 @@ Design inspirado da identidade visual do site do [Met](https://www.metmuseum.org
 
 ### Observações:
 
-- Alguns testes com a API do met demonstraram que a mesma apresenta algumas falhas com os filtros implementados, como por exemplo o de imagem e localização.
+- Alguns testes com a API do met demonstraram que a mesma apresenta algumas falhas com os filtros implementados, como por exemplo o de imagem e localização. Mesmo mandando o parâmetro `hasImages=true` a API retorna objetos sem imagem.
 - O texto digitado também é _case sensitive_ (diferente de maíusculas e minúsculas).
 - Como a API publica não possui uma consulta que retorne todos os objetos com o detalhamento completo, foi necessário fazer uma consulta para cada objeto retornado na primeira consulta, o que torna o processo de busca um pouco mais lento. Para contornar isso limitei a quantidade de resultado por páginas a 8, o que torna a busca mais rápida e não sobrecarrega o servidor.
