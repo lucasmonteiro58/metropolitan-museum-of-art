@@ -55,9 +55,15 @@ onMounted(() => {
             :delay="300 * i"
           />
         </div>
-        <div class="max-w-[1200px] justify-center sm:px-0 px-4 mb-10 mt-5">
+        <div
+          class="max-w-[1200px] flex flex-col items-center justify-center sm:px-0 px-4 mb-10 mt-5"
+          v-if="itemsStore.totalResults > 0"
+        >
+          <div class="mb-1">
+            Page <span class="font-neue-medium">{{ itemsStore.currentPage }}</span> of
+            <span class="font-neue-medium"> {{ itemsStore.results?.length }}</span>
+          </div>
           <Pagination
-            v-if="itemsStore.totalResults > 0"
             class="w-400px"
             v-model="itemsStore.currentPage"
             :total-items="itemsStore.totalResults"
