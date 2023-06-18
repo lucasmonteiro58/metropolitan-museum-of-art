@@ -45,14 +45,14 @@ onMounted(() => {
     >
       <div
         ref="modalRef"
-        class="bg-white w-full mx-0 sm:mx-4 rounded-lg lg:max-w-[500px] relative py-4"
+        class="bg-white w-full mx-0 sm:mx-4 rounded-lg sm:max-w-[500px] relative py-4"
         v-motion
         :initial="{ opacity: 0, scale: 0.8 }"
         :enter="{ opacity: 1, scale: 1 }"
       >
         <div class="relative">
           <h1
-            class="text-2xl font-neue-medium mb-5 mx-4 pr-10 sm:ml-4 md:mx-4 md:px-4 text-primary leading-6 max-h-[98px] overflow-hidden"
+            class="text-2xl font-neue-medium mb-5 mx-4 pr-10 sm:ml-4 sm:mx-4 sm:px-4 sm:pr-8 text-primary leading-6 max-h-[98px] overflow-hidden"
           >
             {{ obj?.title }}
           </h1>
@@ -64,7 +64,7 @@ onMounted(() => {
         </div>
 
         <div
-          class="modal flex flex-col max-h-[80vh] mx-4 mr-4 sm:ml-4 md:mx-4 md:px-4 overflow-y-auto items-center"
+          class="modal flex flex-col max-h-[80vh] mx-4 mr-4 sm:ml-4 sm:mx-4 sm:px-4 overflow-y-auto items-center"
         >
           <div
             v-if="obj?.primaryImage || obj?.primaryImageSmall"
