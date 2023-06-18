@@ -81,20 +81,20 @@ export const useModalStore = defineStore('modal', () => {
     isTimelineWork: false,
     GalleryNumber: ''
   })
-  const show = ref(true)
+  const showing = ref(false)
 
   function showModal(object: IObject) {
     obj.value = object
-    show.value = true
+    showing.value = true
   }
 
   function hideModal() {
-    show.value = false
+    showing.value = false
   }
 
   return {
     obj,
-    show,
+    showing,
     showModal,
     hideModal
   }

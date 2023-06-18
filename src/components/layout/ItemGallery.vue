@@ -1,13 +1,19 @@
 <script setup lang="ts">
 import type { IObject } from '@/types/IObject'
 
-defineProps<{
+const props = defineProps<{
   obj: IObject
 }>()
+
+const modalStore = useModalStore()
+
+function openModal() {
+  modalStore.showModal(props.obj)
+}
 </script>
 
 <template>
-  <div class="group sm:w-fit sm:min-w-0 min-w-full cursor-pointer">
+  <div class="group sm:w-fit sm:min-w-0 min-w-full cursor-pointer" @click="openModal">
     <div
       class="sm:w-[250px] w-full min-w-full overflow-hidden bg-gray-200 flex justify-center relative"
     >

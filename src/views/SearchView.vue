@@ -69,6 +69,6 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <ModalDetails v-if="modalStore.show" :obj="modalStore.obj"></ModalDetails>
+    <ModalDetails v-if="modalStore.showing" :obj="modalStore.obj"></ModalDetails>
   </div>
 </template>
