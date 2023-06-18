@@ -1,46 +1,42 @@
-# metropolitan-museum-of-art
+# Metropolitan Museum of Art
 
-This template should help get you started developing with Vue 3 in Vite.
+O projeto foi feito com **Vue 3** **typescript** utilizando o **Vite**.
+Projeto rodando em **[themetmuseum.netlify.app/](https://themetmuseum.netlify.app/)**
 
-## Recommended IDE Setup
+### Detalhes da interface
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Design inspirado da identidade visual do site do [Met](https://www.metmuseum.org/).
 
-## Type Support for `.vue` Imports in TS
+- **Home**: página inicial com background interativo 360º e botão para acessar a página de busca. É possivel pesquisar ao digitar enter ou clicar no botão de pesquisa.
+- **Search**: página de busca com campo de texto para digitar o termo de busca e filtros para refinar a busca. É possivel pesquisar ao digitar enter (quando o input superiro estiver em focus) ou clicar no botão de pesquisa. Ao clicar em um resultado, o usuário é redirecionado para a modal de detalhes.
+- **Modal de detalhes**: modal com detalhes do objeto selecionado. É possivel fechar a modal clicando no botão de fechar ou clicando fora da modal. Também é possivel clicar na imagem para ver ela em tamanho maior.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+### Lista de algumas bibliotecas utilizadas:
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+- **[TailwindCSS](https://tailwindcss.com/)**: para estilização do projeto
+- **[Pinia](https://pinia.esm.dev/)**: para gerenciamento de estado
+- **[Pinia (plugin persistedstate)](https://prazdevs.github.io/pinia-plugin-persistedstate/)**: para salavar automaticamente algum estado no local storage
+- **[A-frame](https://aframe.io/)**: para background interativo 360º da página inicial
+- **[Axios](https://axios-http.com/)**: para requisição com API
+- **[Vueuse](https://vueuse.org/)**: para utilidades do vue
+- **[Vueuse/motion](https://motion.vueuse.org/)**: para animações e transição de elementos
+- **[Vue Router](https://router.vuejs.org/)**: para gerenciamento de rotas
+- **[Unplugin-auto-import](https://github.com/antfu/unplugin-auto-import)**: plugin do vite para importação automática de bibliotecas e metodos do vue, evitando a necessidade de importar manualmente
+- **[Unplugin-components](https://github.com/antfu/unplugin-vue-components)**: para importação automática de componentes
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+### Instrução para rodar o projeto:
 
-## Customize configuration
+1. Criar arquivo o .env na raiz do projeto com a chave da API do met: `VITE_API_URL=https://collectionapi.metmuseum.org/public/collection/v1/`
+2. Instalar as dependências com `yarn install`
+3. Rodar o projeto com `yarn dev`
+4. Acessar o projeto em `http://localhost:3000/`
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+### Instruções para buildar o projeto:
 
-## Project Setup
+- Rodar o comando `yarn build`
 
-```sh
-npm install
-```
+### Observações:
 
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+- Alguns testes com a API do met demonstraram que a mesma apresenta algumas falhas com os filtros implementados, como por exemplo o de imagem e localização.
+- O texto digitado também é _case sensitive_ (diferente de maíusculas e minúsculas).
+- Como a API publica não possui uma consulta que retorne todos os objetos com o detalhamento completo, foi necessário fazer uma consulta para cada objeto retornado na primeira consulta, o que torna o processo de busca um pouco mais lento. Para contornar isso limitei a quantidade de resultado por páginas a 8, o que torna a busca mais rápida e não sobrecarrega o servidor.
