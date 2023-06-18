@@ -23,10 +23,6 @@ export const useFilterStore = defineStore('filter', () => {
     })
   }
 
-  watch(hasImages, () => {
-    if (hasImages.value === false) hasImages.value = null
-  })
-
   return {
     search,
     location,
