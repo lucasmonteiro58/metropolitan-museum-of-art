@@ -10,6 +10,7 @@ Design inspirado da identidade visual do site do [Met](https://www.metmuseum.org
 - **Home**: página inicial com background interativo 360º e botão para acessar a página de busca. É possivel pesquisar ao digitar enter ou clicar no botão de pesquisa.
 - **Search**: página de busca com campo de texto para digitar o termo de busca e filtros para refinar a busca. É possivel pesquisar ao digitar enter (quando o input superiro estiver em focus) ou clicar no botão de pesquisa. Ao clicar em um resultado, o usuário é redirecionado para a modal de detalhes.
 - **Modal de detalhes**: modal com detalhes do objeto selecionado. É possivel fechar a modal clicando no botão de fechar ou clicando fora da modal. Também é possivel clicar na imagem para ver ela em tamanho maior.
+- **Favoritos**: é possível favoritar um objeto clicando na estrela em cada objeto da lista. A lista de favoritos é salva no local storage e é possivel acessar ela clicando no botão de favoritos no menu superior. É possivel remover um objeto da lista de favoritos clicando na estrela novamente.
 
 ### Lista de algumas bibliotecas utilizadas:
 
