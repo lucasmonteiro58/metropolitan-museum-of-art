@@ -2,13 +2,40 @@
 import type { IObject } from '@/types/IObject'
 import { onClickOutside } from '@vueuse/core'
 
-defineProps<{
+const props = defineProps<{
   obj?: IObject
 }>()
 
 const modalStore = useModalStore()
 const modalRef = ref<HTMLElement | null>(null)
-onClickOutside(modalRef, () => modalStore.hideModal())
+onClickOutside(modalRef, () => {
+  if (!imgBig.value) modalStore.hideModal()
+})
+
+const additionalImages = computed(() => {
+  if (props.obj?.additionalImages) {
+    return props.obj?.additionalImages.slice(0, 5)
+  }
+  return []
+})
+
+const showAdditionalImages = ref(false)
+
+const imgBig = ref('')
+
+function showImageBig(image: string) {
+  imgBig.value = image
+}
+
+function hideImageBig() {
+  imgBig.value = ''
+}
+
+onMounted(() => {
+  setTimeout(() => {
+    showAdditionalImages.value = true
+  }, 1000)
+})
 </script>
 
 <template>
@@ -44,20 +71,23 @@ onClickOutside(modalRef, () => modalStore.hideModal())
             class="flex flex-col items-center"
           >
             <img
+              lazy
               :src="obj?.primaryImageSmall || obj?.primaryImage"
               :alt="obj?.title"
-              class="max-h-[150px] w-fit mb-3"
+              @click="showImageBig(obj?.primaryImageSmall || obj?.primaryImage)"
+              class="max-h-[150px] w-fit mb-3 cursor-pointer"
             />
             <div
-              v-if="obj?.additionalImages.length > 0"
+              v-if="additionalImages.length > 0 && showAdditionalImages"
               class="flex flex-wrap gap-2 mb-5 justify-center max-w-full"
             >
               <img
-                v-for="i in obj?.additionalImages"
+                v-for="i in additionalImages"
                 :key="i"
                 :src="i"
                 :alt="obj?.title"
-                class="max-h-[40px]"
+                @click="showImageBig(i)"
+                class="max-h-[40px] cursor-pointer"
               />
             </div>
           </div>
@@ -119,6 +149,14 @@ onClickOutside(modalRef, () => modalStore.hideModal())
             </div>
           </div>
         </div>
+      </div>
+      <div
+        v-if="imgBig"
+        class="w-full h-full absolute flex justify-center items-center z-50"
+        @click.stop="hideImageBig"
+      >
+        <div class="bg-black opacity-50 w-full h-full absolute"></div>
+        <img v-motion-fade :src="imgBig" alt="Image Object" class="max-h-[98vh] absolute" />
       </div>
     </div>
   </Teleport>

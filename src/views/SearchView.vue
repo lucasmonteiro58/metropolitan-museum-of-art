@@ -19,6 +19,7 @@ watch(computedCurrentResult, () => {
 })
 
 onMounted(() => {
+  favoritesStore.showingFavorites = false
   search()
 })
 </script>

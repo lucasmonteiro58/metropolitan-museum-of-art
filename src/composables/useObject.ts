@@ -19,7 +19,7 @@ export default function useObjects() {
         const data = response?.data as IObject
         itemsStore.currentObjects.push(data)
       })
-    ).then(() => {
+    ).finally(() => {
       isLoadingObjects.value = false
     })
   }
