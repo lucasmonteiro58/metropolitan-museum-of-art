@@ -24,11 +24,25 @@ function onSearch() {
     <img class="w-24" src="/assets/img/drag.gif" alt="Image drag" />
   </div>
   <div
-    class="w-full sm:w-[813px] absolute sm:bottom-12 bottom-14 sm:left-14 left-0 pl-5 sm:pl-0 select-none rigin-bottom"
+    class="w-full sm:w-[813px] absolute sm:bottom-12 bottom-20 sm:left-14 left-0 pl-5 sm:pl-0 select-none rigin-bottom"
+    v-if="!showLoadingScreen"
   >
-    <h1 class="text-white font-neue-medium text-5xl sm:text-9xl pr-9 sm:pr-0">
+    <h1
+      class="text-white font-neue-medium text-5xl sm:text-9xl pr-9 sm:pr-0"
+      v-motion
+      :initial="{ opacity: 0, x: -100 }"
+      :enter="{ opacity: 1, x: 0 }"
+    >
       Welcome to the Met.
     </h1>
-    <ButtonSearch v-model="search" class="sm:mt-10 mt-5" @search="onSearch" />
+    <ButtonSearch
+      v-motion
+      :initial="{ opacity: 0, x: -100 }"
+      :enter="{ opacity: 1, x: 0 }"
+      :delay="100"
+      v-model="search"
+      class="sm:mt-10 mt-5"
+      @search="onSearch"
+    />
   </div>
 </template>

@@ -18,7 +18,10 @@ onClickOutside(modalRef, () => modalStore.hideModal())
     >
       <div
         ref="modalRef"
-        class="bg-white w-full min-h-[400px] mx-4 rounded-lg lg:max-w-[500px] relative py-4"
+        class="bg-white w-full mx-4 rounded-lg lg:max-w-[500px] relative py-4"
+        v-motion
+        :initial="{ opacity: 0, scale: 0.8 }"
+        :enter="{ opacity: 1, scale: 1 }"
       >
         <div class="relative">
           <h1
